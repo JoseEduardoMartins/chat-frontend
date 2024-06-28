@@ -53,7 +53,7 @@ export function AuthProvider({ children }: AuthProviderType) {
 
     http.defaults.headers.token = token;
 
-    router.push("/");
+    router.push("/chat");
   }
 
   async function signUp(data: SignUpType) {
@@ -100,6 +100,8 @@ export function AuthProvider({ children }: AuthProviderType) {
     });
 
     http.defaults.headers.token = token;
+
+    router.push("/chat");
   }
 
   useEffect(() => {

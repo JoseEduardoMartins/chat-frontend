@@ -1,16 +1,16 @@
-import { FaSearch } from 'react-icons/fa';
+import { FaSearch } from "react-icons/fa";
 
 export const InputSearch = () => {
   return (
-    <div className="bg-zinc-200 rounded-full p-3">
+    <div className="p-2 border border-zinc-600 rounded-lg text-white">
       <form className="flex flex-row justify-between items-center">
-        <input
-          className="text-sm bg-zinc-200 mx-2 focus:outline-none"
-          type="text"
-        />
         <button type="submit">
           <FaSearch className="cursor-pointer" />
         </button>
+        <input
+          className="w-full ml-2 border-0 bg-transparent outline-0"
+          type="text"
+        />
       </form>
     </div>
   );
