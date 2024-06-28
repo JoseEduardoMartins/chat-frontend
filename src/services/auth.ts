@@ -78,14 +78,17 @@ export const confirmSignUpRequest = async ({
 
 export type RecoverUserImformationType = {
   token: string;
+  user: User;
 };
 
-export const recoverUserImformation = async (): Promise<User> => {
-  // eslint-disable-next-line no-useless-catch
-  try {
-    const { data } = await http.get(`/auth/recover-user-imformation/`);
-    return data;
-  } catch (error) {
-    throw error;
-  }
-};
+export const recoverUserImformation =
+  async (): Promise<RecoverUserImformationType> => {
+    // eslint-disable-next-line no-useless-catch
+    try {
+      const { data } = await http.get(`/auth/recover-user-imformation/`);
+
+      return data;
+    } catch (error) {
+      throw error;
+    }
+  };

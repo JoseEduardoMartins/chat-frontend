@@ -1,7 +1,6 @@
 "use client";
 
-import { Form, FormField } from "@/components/form";
-import { Button, Link } from "@/components";
+import { Button, Form, FormField, Link } from "@/components";
 import { useSignIn } from "./useSignIn";
 
 const SignIn = () => {

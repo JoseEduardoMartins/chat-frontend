@@ -1,15 +1,21 @@
 import { ReactNode } from "react";
 
-export type ButtonType = { children: ReactNode };
+export type ButtonType = {
+  type?: "submit" | "button";
+  onClick?: () => void;
+  children: ReactNode;
+};
 
-export const Button = ({ children }: ButtonType) => {
+export const Button = ({ type = "submit", onClick, children }: ButtonType) => {
   return (
     <button
-      type="submit"
+      type={type}
+      onClick={onClick}
       className="
         flex
         justify-center
         items-center
+        gap-2
         px-5
         py-3
         max-h-12
@@ -23,7 +29,7 @@ export const Button = ({ children }: ButtonType) => {
         text-button-lg
       "
     >
-      <span>{children}</span>
+      {children}
     </button>
   );
 };

@@ -1,5 +1,5 @@
-import { ReactNode } from 'react';
-import { FormProvider, UseFormReturn } from 'react-hook-form';
+import { ReactNode } from "react";
+import { FormProvider, UseFormReturn } from "react-hook-form";
 
 export type FormType = {
   methods: UseFormReturn<any>;

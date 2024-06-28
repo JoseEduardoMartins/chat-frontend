@@ -21,6 +21,7 @@ type ConfirmSignUpType = {
 type AuthContextType = {
   user: User | null;
   isAuthenticated: boolean;
+  loading: boolean;
   signIn: (data: SignInType) => Promise<void>;
   signUp: (data: SignUpType) => Promise<void>;
   confirmSignUp: (data: ConfirmSignUpType) => Promise<void>;
@@ -77,25 +78,46 @@ export function AuthProvider({ children }: AuthProviderType) {
   async function signOut() {
     destroyCookie(undefined, "chat.token");
     setUser(null);
+    router.push("/sign-in");
+  }
+
+  async function loadStoragedData() {
+    const { "chat.token": token } = parseCookies();
+
+    if (!token) {
+      setLoading(false);
+      router.push("/sign-in");
+      return;
+    }
+
+    const { user: renewedUser, token: renewedToken } =
+      await recoverUserImformation();
+
+    setUser(renewedUser);
+
+    setCookie(undefined, "chat.token", renewedToken, {
+      maxAge: 60 * 60 * 1, //1 hour
+    });
+
+    http.defaults.headers.token = token;
   }
 
   useEffect(() => {
-    const { "chat.token": token } = parseCookies();
-
-    if (token) {
-      recoverUserImformation()
-        .then((response) => {
-          setUser(response);
-          setLoading(false);
-        })
-        .catch(() => router.push("/sign-in"));
-    }
+    loadStoragedData();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
     <AuthContext.Provider
-      value={{ user, isAuthenticated, signIn, signUp, confirmSignUp, signOut }}
+      value={{
+        user,
+        isAuthenticated,
+        loading,
+        signIn,
+        signUp,
+        confirmSignUp,
+        signOut,
+      }}
     >
       {children}
     </AuthContext.Provider>

@@ -1,3 +1,5 @@
+"use client";
+
 import { useState } from "react";
 import { useFormContext } from "react-hook-form";
 import { IoIosArrowDown, IoIosArrowUp } from "react-icons/io";
