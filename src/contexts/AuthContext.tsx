@@ -52,16 +52,12 @@ export function AuthProvider({ children }: AuthProviderType) {
     });
 
     http.defaults.headers.token = token;
-
-    router.push("/chat");
   }
 
   async function signUp(data: SignUpType) {
     const { id } = await signUpRequest(data);
 
     setUser({ id, ...data });
-
-    router.push("/confirm-sign-up");
   }
 
   async function confirmSignUp(data: ConfirmSignUpType) {
@@ -72,7 +68,6 @@ export function AuthProvider({ children }: AuthProviderType) {
       });
 
     setUser(null);
-    router.push("/sign-in");
   }
 
   async function signOut() {

@@ -1,7 +1,10 @@
 "use client";
 
 import { Button, Form, FormField, Link } from "@/components";
+import { ToastContainer } from "react-toastify";
 import { useSignUp } from "./useSignUp";
+
+import "react-toastify/dist/ReactToastify.css";
 
 const SignUp = () => {
   const { methods, handleSubmit } = useSignUp();
@@ -44,6 +47,7 @@ const SignUp = () => {
           </div>
         </div>
       </div>
+      <ToastContainer />
     </main>
   );
 };

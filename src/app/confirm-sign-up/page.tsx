@@ -1,6 +1,7 @@
 "use client";
 
 import { Button, Form, FormField, Link } from "@/components";
+import { ToastContainer } from "react-toastify";
 import { useConfirmSignUp } from "./useConfirmSignUp";
 
 const ConfirmSignUp = () => {
@@ -32,6 +33,7 @@ const ConfirmSignUp = () => {
           </div>
         </div>
       </div>
+      <ToastContainer />
     </main>
   );
 };

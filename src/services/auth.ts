@@ -18,19 +18,13 @@ type SignInResponseType = {
   user: User;
 };
 
-export const signInRequest = async ({
-  email,
-  password,
-}: SignInType): Promise<SignInResponseType> => {
-  // eslint-disable-next-line no-useless-catch
-  try {
-    const { data } = await http.post(`/auth/sign-in/`, { email, password });
-    const { token, user } = data;
+export const signInRequest = async (
+  body: SignInType
+): Promise<SignInResponseType> => {
+  const { data } = await http.post(`/auth/sign-in/`, body);
+  const { token, user } = data;
 
-    return { token, user };
-  } catch (error) {
-    throw error;
-  }
+  return { token, user };
 };
 
 export type SignUpType = {
@@ -45,15 +39,10 @@ type SignUpResponseType = {
 };
 
 export const signUpRequest = async (
-  user: SignUpType
+  body: SignUpType
 ): Promise<SignUpResponseType> => {
-  // eslint-disable-next-line no-useless-catch
-  try {
-    const { data } = await http.post(`/auth/sign-up/`, user);
-    return data;
-  } catch (error) {
-    throw error;
-  }
+  const { data } = await http.post(`/auth/sign-up/`, body);
+  return data;
 };
 
 export type ConfirmSignUpType = {
@@ -61,19 +50,10 @@ export type ConfirmSignUpType = {
   securityCode: string;
 };
 
-export const confirmSignUpRequest = async ({
-  email,
-  securityCode,
-}: ConfirmSignUpType): Promise<void> => {
-  // eslint-disable-next-line no-useless-catch
-  try {
-    await http.post(`/auth/confirm-sign-up/`, {
-      email,
-      securityCode,
-    });
-  } catch (error) {
-    throw error;
-  }
+export const confirmSignUpRequest = async (
+  body: ConfirmSignUpType
+): Promise<void> => {
+  await http.post(`/auth/confirm-sign-up/`, body);
 };
 
 export type RecoverUserImformationType = {
@@ -83,12 +63,7 @@ export type RecoverUserImformationType = {
 
 export const recoverUserImformation =
   async (): Promise<RecoverUserImformationType> => {
-    // eslint-disable-next-line no-useless-catch
-    try {
-      const { data } = await http.get(`/auth/recover-user-imformation/`);
+    const { data } = await http.get(`/auth/recover-user-imformation/`);
 
-      return data;
-    } catch (error) {
-      throw error;
-    }
+    return data;
   };
