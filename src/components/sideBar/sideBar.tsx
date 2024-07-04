@@ -7,33 +7,33 @@ import { InputSearch } from "../input";
 const contacts = [
   {
     id: 1,
-    name: "kezia silva",
+    name: "teste 1",
     lastmessage: {
-      content: "oii vida",
+      content: "menssagem teste",
       createAt: new Date(),
     },
   },
   {
     id: 2,
-    name: "kezia silva",
+    name: "teste 2",
     lastmessage: {
-      content: "oii vida",
+      content: "menssagem teste 2",
       createAt: new Date(),
     },
   },
   {
     id: 3,
-    name: "kezia silva",
+    name: "teste 3",
     lastmessage: {
-      content: "oii vida",
+      content: "menssagem teste 3",
       createAt: new Date(),
     },
   },
   {
     id: 4,
-    name: "kezia silva",
+    name: "teste 4",
     lastmessage: {
-      content: "oii vida",
+      content: "menssagem teste 4",
       createAt: new Date(),
     },
   },
